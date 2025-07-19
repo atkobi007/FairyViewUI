@@ -1,0 +1,23 @@
+export type ButtonSize = "small" | "middle" | "large" | "auto"
+export type ButtonType = "info" | "success" | "warning" | "error" | "primary" | "auto"
+export const getButtonBackground = (type : ButtonType, defaultBg : string) : string => {
+	let background : string = defaultBg;
+	switch (type) {
+		case "error":
+			background = "#dd524d";
+			break;
+		case "info":
+			background = "#909399";
+			break;
+		case "primary":
+			background = "#2979ff";
+			break;
+		case "success":
+			background = "#4cd964";
+			break;
+		case "warning":
+			background = "#f0ad4e";
+			break;
+	}
+	return background;
+}

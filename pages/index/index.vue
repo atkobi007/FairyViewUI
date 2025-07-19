@@ -3,11 +3,12 @@
 		<image class="logo" src="/static/logo.png"></image>
 		<text class="title">{{title}}</text>
 		<fui-badge text="1"></fui-badge>
-		<view style="width:100px;height:60px;position:relative; background: antiquewhite;">
-			<fui-badge text="10" :isDot="false" :inverted="true" type="error" absolute="rightTop" size="small">
+		<view style="width:300px;height:60px;position:relative; background: antiquewhite;">
+			<fui-badge text="10" :isDot="false" :inverted="true" type="error" absolute="rightTop">
 			</fui-badge>
 		</view>
-
+		<fui-card></fui-card>
+		<fui-button></fui-button>
 	</view>
 </template>
 

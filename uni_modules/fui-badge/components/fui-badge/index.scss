@@ -1,78 +1,73 @@
-$fui-primary: #2979ff !default;
-	$fui-success: #4cd964 !default;
-	$fui-warning: #f0ad4e !default;
-	$fui-error: #dd524d !default;
-	$fui-info: #909399 !default;
-	$fui-default: #FFF !default;
+@import "@/uni_modules/fui-style/index.scss";
 
-	.fui-badge {
-		padding: 1px 2px;
-		border-radius: 40rpx;
-		text-align: center;
-		font-size: 20rpx;
-		z-index: 10;
+.fui-badge {
+	padding: $fui-size-1 $fui-size-2;
+	border-radius: $fui-size-40;
+	text-align: center;
+	font-size: $fui-size-20;
+	z-index: 10;
 
-		&--absolute {
-			position: absolute;
-		}
-
-		&--info {
-			background: transparent;
-			border: 1px solid $fui-info;
-			color: $fui-info;
-		}
-
-		&--primary {
-			background: transparent;
-			border: 1px solid $fui-primary;
-			color: $fui-primary;
-		}
-
-		&--success {
-			background: transparent;
-			border: 1px solid $fui-success;
-			color: $fui-success;
-		}
-
-		&--warning {
-			background: transparent;
-			border: 1px solid $fui-warning;
-			color: $fui-warning;
-		}
-
-		&--error {
-			background: transparent;
-			border: 1px solid $fui-error;
-			color: $fui-error;
-		}
-
-		&--info-inverted {
-			background: $fui-info;
-			border: 1px solid $fui-info;
-			color: $fui-default;
-		}
-
-		&--primary-inverted {
-			background: $fui-primary;
-			border: 1px solid $fui-primary;
-			color: $fui-default;
-		}
-
-		&--success-inverted {
-			background: $fui-success;
-			border: 1px solid $fui-success;
-			color: $fui-default;
-		}
-
-		&--warning-inverted {
-			background: $fui-warning;
-			border: 1px solid $fui-warning;
-			color: $fui-default;
-		}
-
-		&--error-inverted {
-			background: $fui-error;
-			border: 1px solid $fui-error;
-			color: $fui-default;
-		}
+	&--absolute {
+		position: absolute;
 	}
+
+	&--info {
+		background: transparent;
+		border: 1px solid $fui-info;
+		color: $fui-info;
+	}
+
+	&--primary {
+		background: transparent;
+		border: 1px solid $fui-primary;
+		color: $fui-primary;
+	}
+
+	&--success {
+		background: transparent;
+		border: 1px solid $fui-success;
+		color: $fui-success;
+	}
+
+	&--warning {
+		background: transparent;
+		border: 1px solid $fui-warning;
+		color: $fui-warning;
+	}
+
+	&--error {
+		background: transparent;
+		border: 1px solid $fui-error;
+		color: $fui-error;
+	}
+
+	&--info-inverted {
+		background: $fui-info;
+		border: 1px solid $fui-info;
+		color: $fui-default;
+	}
+
+	&--primary-inverted {
+		background: $fui-primary;
+		border: 1px solid $fui-primary;
+		color: $fui-default;
+	}
+
+	&--success-inverted {
+		background: $fui-success;
+		border: 1px solid $fui-success;
+		color: $fui-default;
+	}
+
+	&--warning-inverted {
+		background: $fui-warning;
+		border: 1px solid $fui-warning;
+		color: $fui-default;
+	}
+
+	&--error-inverted {
+		background: $fui-error;
+		border: 1px solid $fui-error;
+		color: $fui-default;
+	}
+}

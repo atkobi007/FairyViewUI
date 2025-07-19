@@ -1,14 +1,15 @@
 <template>
 	<text v-if="text" :class="classNames" :style="[positionStyle, customStyle, dotStyle]"
-		class="fui-badge fui-badge--absolute" @click="onClick()">{{displayValue}}</text>
+		class="fui-badge fui-badge--absolute">{{displayValue}}</text>
 </template>
 
-<script setup>
+<script setup lang="uts">
+	import { getPos, getDotResult, getDisplayValue } from './badge';
+
 	/**
 	 * Badge 数字角标  包裹的父节点必须设置 position
 	 * @description 数字角标一般和其它控件（列表、9宫格等）配合使用，用于进行数量提示，默认为实心灰色背景
 	 * @property {String} text 角标内容
-	 * @property {String} size = [normal|small] 角标内容
 	 * @property {String} type = [info|primary|success|warning|error] 颜色类型
 	 * 	@value info 灰色
 	 * 	@value primary 蓝色
@@ -27,118 +28,61 @@
 	 * @event {Function} click 点击 Badge 触发事件
 	 * @example <fui-badge text="1"></fui-badge>
 	 */
-
-	const badgeRef = ref(null)
-	const emits = defineEmits("click");
-	const props = defineProps({
-		type: {
-			type: String,
-			default: 'error'
-		},
-		inverted: {
-			type: Boolean,
-			default: false
-		},
-		isDot: {
-			type: Boolean,
-			default: false
-		},
-		maxNum: {
-			type: Number,
-			default: 99
-		},
-		absolute: {
-			type: String,
-			default: 'rightTop'
-		},
-		offset: {
-			type: Array,
-			default () {
-				return [0, 0]
-			}
-		},
-		text: {
-			type: String,
-			default: ''
-		},
-		size: {
-			type: String,
-			default: 'small'
-		},
-		customStyle: {
-			type: Object,
-			default () {
-				return {}
-			}
-		}
+	interface BadgeProps {
+		type : string
+		inverted : boolean
+		isDot : boolean
+		maxNum : number
+		absolute : string
+		offset : Array<number>
+		text : string
+		customStyle : UTSJSONObject
+	}
+	const props = withDefaults(defineProps<BadgeProps>(), {
+		type: 'error',
+		inverted: false,
+		isDot:false,
+		maxNum:99,
+		absolute:"rightTop",
+		offset:[0,0],
+		text:"",
+		customStyle:new UTSJSONObject()
 	})
 
-	const onClick = () => {
-		emits('click');
-	}
-
 	const classNames = computed(() => {
-		let type = 'fui-badge--' + props.type;
-		const inverted = props.inverted ? type + '-inverted' : type;
-		const absolute = props.absolute.length > 0 ? 'fui-badge--absolute' : '';
-		return [
+		const typeStr : string = props.type;
+		const type : string = 'fui-badge--' + typeStr;
+		const invertedBoo : boolean = props.inverted;
+		const absoluteBoo : boolean = props.absolute.length > 0
+		const inverted = invertedBoo ? type + '-inverted' : type;
+		const absolute = absoluteBoo ? 'fui-badge--absolute' : '';
+		const cls = [
 			inverted, absolute
 		].join(' ')
+		return cls;
 	});
 
 	const positionStyle = computed(() => {
-		let xNum: Number = 0;
-		let yNum: Number = 0;
+		let xNum : Number = 0;
+		let yNum : Number = 0;
 		const offset = props.offset;
 		if (offset != null && offset.length > 0) {
 			xNum = offset[0] as Number;
 			yNum = offset[1] as Number;
 		}
-		const x = `${xNum}px`
-		const y = `${yNum}px`
-		const posList: any = {
-			rightTop: {
-				right: x,
-				top: y
-			},
-			rightBottom: {
-				right: x,
-				bottom: y
-			},
-			leftBottom: {
-				left: x,
-				bottom: y
-			},
-			leftTop: {
-				left: x,
-				top: y
-			}
-		}
-		const posStyle: any = posList[props.absolute];
-		console.error("TAG::",posStyle)
-		return posStyle
+		const x : string = `${xNum}px`
+		const y : string = `${yNum}px`
+		return getPos(props.absolute, x, y);
 	})
 
 	const dotStyle = computed(() => {
-		let dotResult: any = {}
-		if (!props.isDot) return dotResult
-		dotResult = {
-			width: '10px',
-			minWidth: '0',
-			height: '10px',
-			padding: '0',
-			borderRadius: '10px'
-		}
-		return dotResult
+		return getDotResult(props.isDot)
 	});
 
-	const displayValue = computed((): String => {
-		const textStr = props.text;
-		let textNumber = parseInt(textStr);
-		if (isNaN(textNumber) || props.isDot) {
-			return ""
-		}
-		return textNumber > props.maxNum ? `${props.maxNum}+` : textStr;
+	const displayValue = computed(() => {
+		if (props.isDot) return ""
+		const text : string = props.text;
+		return getDisplayValue(text, 99)
 	})
 </script>
 

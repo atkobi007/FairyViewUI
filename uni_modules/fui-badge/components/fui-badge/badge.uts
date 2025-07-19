@@ -1,24 +1,24 @@
-export function getPos(pos:string,x:string,y:string):any{
-	switch(pos){
-		case "rightTop":return {right:x,top:y};
-		case "rightBottom":return {right:x,bottom:y};
-		case "leftBottom":return {left:x,bottom:y};
-		case "leftTop":return {left:x,top:y};
+export function getPos(pos : string, x : string, y : string) : any {
+	switch (pos) {
+		case "rightTop": return { right: x, top: y };
+		case "rightBottom": return { right: x, bottom: y };
+		case "leftBottom": return { left: x, bottom: y };
+		case "leftTop": return { left: x, top: y };
 	}
 	return {};
 }
-export function getDotResult(isDot:boolean):any{
-	if(!isDot)return {}
+export function getDotResult(isDot : boolean) : any {
+	if (!isDot) return {}
 	return {
-		width:"10px",
-		minWidth:"0px",
-		height:"10px",
-		padding:"0px",
-		borderRadius:"10px"
+		width: "10px",
+		minWidth: "0px",
+		height: "10px",
+		padding: "0px",
+		borderRadius: "10px"
 	}
 }
 
-export function getDisplayValue(text:string,maxNum:number=99):string{	
+export function getDisplayValue(text : string, maxNum : number = 99) : string {
 	let textNumber = parseInt(text);
 	if (isNaN(textNumber)) {
 		return ""

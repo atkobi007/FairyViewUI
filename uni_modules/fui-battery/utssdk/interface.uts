@@ -1,0 +1,20 @@
+/**
+ * interface.uts
+ * uts插件接口定义文件，按规范定义接口文件可以在HBuilderX中更好的做到语法提示
+ */
+export type GetBatteryInfoResult = {
+  /**
+  * 设备电量，范围1 - 100
+  */
+  level: number,
+  /**
+  * 是否正在充电中
+  */
+  isCharging: boolean,
+  info:string
+}
+
+/* 同步函数定义 */
+export type GetBatteryInfoSync = () => GetBatteryInfoResult
+
+

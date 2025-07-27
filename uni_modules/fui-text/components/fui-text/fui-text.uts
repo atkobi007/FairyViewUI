@@ -1,0 +1,109 @@
+export type FuiTextResult {
+	id : number
+	text : string
+	isKeyword : boolean
+}
+
+//对应 props 属性
+export interface IFuiTextProps {
+	text : string
+	textColor : string
+	backGroundColor : string
+	highLightText : string
+	hightLightColor : string
+	hightLightBackGroundColor : string
+	fontSize : number
+	lines : number
+	ellipsis : string
+}
+
+export class FuiTextUtils {
+	static splitByKeywords(str1 : string, str2 : string) : FuiTextResult[] {
+		let resultList : FuiTextResult[] = []
+		const keywords : Array<string> = str2.split(',');
+		if (keywords.length === 0 || str2.length === 0) {
+			let result : FuiTextResult = { id: 1, text: str1, isKeyword: false }
+			resultList.push(result)
+			return resultList
+		}
+		const reg = new RegExp(`(${keywords.map((k : string) => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'g')
+		let list : Array<string> = str1
+			.split(reg)
+			.filter(s => s !== '')
+		for (let i = 0; i < list.length; i++) {
+			let result1 : FuiTextResult = { id: i + 1, text: list[i], isKeyword: keywords.includes(list[i]) }
+			resultList.push(result1)
+		}
+		return resultList
+	}
+
+	static getStringWidth(str : string) : number {
+		let width = 0
+		for (let i = 0; i < str.length; i++) {
+			const char = str.substring(i, i + 1)
+			// 中文字符
+			if (/[\u4e00-\u9fa5]/.test(char)) {
+				width += 22
+			} else if (/[A-Z]/.test(char)) {
+				width += 12
+			} else if (/[i]/.test(char)) {
+				width += 7
+			} else {
+				width += 10.1
+			}
+		}
+		return width
+	}
+
+	static getStyle(props : UTSJSONObject) : UTSJSONObject {
+		let fontSize : number|null = props.getNumber("fontSize");
+		const lines : number | null = props.getNumber("lines");
+		const ellipsis : string | null = props.getString("ellipsis")
+		const style = new UTSJSONObject();
+		style.set("font-size", `${fontSize}rpx`);
+		// #ifndef APP
+		//只在 WEB 生效
+		style.set("word-break", `break-all`);
+		// #endif
+
+		style.set("word-break", `break-all`);
+		style.set("word-wrap", `word-break`);
+		if (ellipsis != null && ellipsis.length > 0) {
+			style.set("text-overflow", `ellipsis`);
+			style.set("white-space", `nowrap`);
+		} else if (lines != null && lines > 0) {
+			if(fontSize===null){
+				fontSize=0
+			}
+			style.set("height", `${(fontSize + 5) * lines}rpx`);
+			style.set("overflow", `hidden`);
+		}
+		return style
+	}
+
+	static getSubTextStyle = (item : FuiTextResult, props : UTSJSONObject) : UTSJSONObject => {
+		const isKeyword : boolean = item.isKeyword;
+		const style = new UTSJSONObject();
+		style.set("font-size", `${props.fontSize}rpx`);
+		// #ifndef APP
+		//只在 WEB 生效
+		style.set("word-break", `break-all`);
+		//APP 在外层text 设置后就生效，WEB 不生效 ?，这里要设置一次
+		if (props.ellipsis.length > 0) {
+			style.set("text-overflow", `ellipsis`);
+			style.set("white-space", `nowrap`);
+		}
+		// #endif
+		style.set("word-break", `break-all`);
+		style.set("word-wrap", `word-break`);
+		if (isKeyword) {
+			style.set("color", props.hightLightColor);
+			style.set("background", props.hightLightBackGroundColor);
+		} else {
+			style.set("color", props.textColor);
+			style.set("background", props.backGroundColor);
+		}
+
+		return style
+	}
+}

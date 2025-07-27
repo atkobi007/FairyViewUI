@@ -2,22 +2,18 @@
 	<view style="width: 100%;height: 100%;background-color: floralwhite;">
 		<image class="logo" src="/static/logo.png"></image>
 		<text class="title">{{title}}</text>
-		<fui-badge text="1"></fui-badge>
-		<!-- <view style="width:300px;height:60px;position:relative; background: antiquewhite;">
-			<fui-badge text="10" :isDot="false" :inverted="true" type="error" absolute="rightTop">
-			</fui-badge>
-		</view>
-		<fui-card width="600rpx" height="600rpx" style="margin-left: 10px;"></fui-card> -->
-		<view style="display: flex;flex-direction: row;">
-			<fui-button label="这是按钮文字1"></fui-button>
-		</view>
+		<fui-badge>
+			<fui-button :text="title" :labelColor="labelColor"></fui-button>
+		</fui-badge>
+		<fui-text></fui-text>
 	</view>
 </template>
 
 <script setup>
 	import { getBatteryInfoSync } from "../../uni_modules/fui-battery"
-
+	
 	const title = ref("test")
+	const labelColor=ref("red")
 	onMounted(() => {
 		console.error("NVUE")
 		const result = getBatteryInfoSync()
@@ -50,7 +46,7 @@
 	}
 
 	.title {
-		font-size: 18px;
+		font-size: 28rpx;
 		color: #8f8f94;
 		text-align: center;
 	}

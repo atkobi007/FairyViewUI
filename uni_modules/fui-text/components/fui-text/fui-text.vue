@@ -70,7 +70,7 @@
 		obj.set("backGroundColor",props.backGroundColor);
 		obj.set("hightLightColor",props.hightLightColor);
 		obj.set("hightLightBackGroundColor",props.hightLightBackGroundColor);
-		
+		obj.set("ellipsis",props.ellipsis);
 		let subStyle = FuiTextUtils.getSubTextStyle(item, obj)
 		return subStyle;
 	}
@@ -86,7 +86,6 @@
 		//先拆分出来需要高亮的文字
 		const hlText = props.highLightText
 		showList.value = FuiTextUtils.splitByKeywords(props.text, hlText)
-		console.error(showList.value)
 	})
 </script>
 <style lang="scss">

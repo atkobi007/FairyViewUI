@@ -1,27 +1,33 @@
-export function getPos(pos : string, x : string, y : string) : any {
-	switch (pos) {
-		case "rightTop": return { right: x, top: y };
-		case "rightBottom": return { right: x, bottom: y };
-		case "leftBottom": return { left: x, bottom: y };
-		case "leftTop": return { left: x, top: y };
+export function getPos(pos : string, offset:Array<number>) : UTSJSONObject {
+	let xNum : Number = 0;
+	let yNum : Number = 0;
+	if (offset.length > 1) {
+		xNum = offset[0];
+		yNum = offset[1];
 	}
-	return {};
+	const x : string = `${xNum}rpx`
+	const y : string = `${yNum}rpx`
+	let posResult : UTSJSONObject = new UTSJSONObject();
+	const xStr : string = pos.indexOf("left") > -1 ? "left" : "right";
+	const yStr : string = pos.indexOf("Bottom") > -1 ? "bottom" : "top";
+	posResult.set(xStr, x)
+	posResult.set(yStr, y);
+	return posResult;
 }
-export function getDotResult(isDot : boolean) : any {
-	if (!isDot) return {}
-	return {
-		width: "10px",
-		minWidth: "0px",
-		height: "10px",
-		padding: "0px",
-		borderRadius: "10px"
-	}
+export function getDotResult(isDot : boolean) : UTSJSONObject {
+	let dotResult : UTSJSONObject = new UTSJSONObject();
+	if (!isDot) return dotResult;
+	dotResult.set("width", "15rpx");
+	dotResult.set("height", "15rpx");
+	dotResult.set("padding", "0rpx");
+	dotResult.set("borderRadius", "15rpx");
+	return dotResult;
 }
 
 export function getDisplayValue(text : string, maxNum : number = 99) : string {
 	let textNumber = parseInt(text);
 	if (isNaN(textNumber)) {
-		return ""
+		return text
 	}
 	return textNumber > maxNum ? `${maxNum}+` : text;
 }

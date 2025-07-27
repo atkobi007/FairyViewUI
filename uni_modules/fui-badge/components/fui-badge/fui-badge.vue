@@ -1,6 +1,13 @@
 <template>
-	<text v-if="text" :class="classNames" :style="[positionStyle, customStyle, dotStyle]"
-		class="fui-badge fui-badge--absolute">{{displayValue}}</text>
+	<view class="fui-badge-root">
+		<slot>
+			<template>
+				<view class="template">1</view>
+			</template>
+		</slot>
+		<text v-if="text" :class="classNames" :style="[positionStyle, customStyle, dotStyle]"
+			class="fui-badge fui-badge--absolute">{{displayValue}}</text>
+	</view>
 </template>
 
 <script setup lang="uts">
@@ -28,7 +35,7 @@
 	 * @event {Function} click 点击 Badge 触发事件
 	 * @example <fui-badge text="1"></fui-badge>
 	 */
-	interface BadgeProps {
+	interface FuiBadgeProps {
 		type : string
 		inverted : boolean
 		isDot : boolean
@@ -38,15 +45,15 @@
 		text : string
 		customStyle : UTSJSONObject
 	}
-	const props = withDefaults(defineProps<BadgeProps>(), {
+	const props = withDefaults(defineProps<FuiBadgeProps>(), {
 		type: 'error',
-		inverted: false,
-		isDot:false,
-		maxNum:99,
-		absolute:"rightTop",
-		offset:[0,0],
-		text:"",
-		customStyle:new UTSJSONObject()
+		inverted: true,
+		isDot: false,
+		maxNum: 99,
+		absolute: "rightTop",
+		offset: [0, 0],
+		text: "N",
+		customStyle: new UTSJSONObject()
 	})
 
 	const classNames = computed(() => {
@@ -63,16 +70,7 @@
 	});
 
 	const positionStyle = computed(() => {
-		let xNum : Number = 0;
-		let yNum : Number = 0;
-		const offset = props.offset;
-		if (offset != null && offset.length > 0) {
-			xNum = offset[0] as Number;
-			yNum = offset[1] as Number;
-		}
-		const x : string = `${xNum}px`
-		const y : string = `${yNum}px`
-		return getPos(props.absolute, x, y);
+		return getPos(props.absolute, props.offset);
 	})
 
 	const dotStyle = computed(() => {
@@ -86,6 +84,90 @@
 	})
 </script>
 
-<style lang="scss">
-	@import "./index.scss"
+<style lang="scss" scoped>
+	@import "@/uni_modules/fui-style/index.scss";
+
+	.fui-badge-root {
+		position: relative;
+		margin: 0px auto;
+		padding: 10rpx 10rpx;
+
+		.template {
+			width: 50rpx;
+			height: 50rpx;
+			background: #EEE;
+		}
+
+		.fui-badge {
+			padding: 0 $fui-size-4;
+			border-radius: $fui-size-40;
+			text-align: center;
+			font-size: $fui-size-20;
+			z-index: 10;
+
+			&--absolute {
+				position: absolute;
+			}
+
+			&--info {
+				background: transparent;
+				border: 1px solid $fui-info;
+				color: $fui-info;
+			}
+
+			&--primary {
+				background: transparent;
+				border: 1px solid $fui-primary;
+				color: $fui-primary;
+			}
+
+			&--success {
+				background: transparent;
+				border: 1px solid $fui-success;
+				color: $fui-success;
+			}
+
+			&--warning {
+				background: transparent;
+				border: 1px solid $fui-warning;
+				color: $fui-warning;
+			}
+
+			&--error {
+				background: transparent;
+				border: 1px solid $fui-error;
+				color: $fui-error;
+			}
+
+			&--info-inverted {
+				background: $fui-info;
+				border: 1px solid $fui-info;
+				color: $fui-default;
+			}
+
+			&--primary-inverted {
+				background: $fui-primary;
+				border: 1px solid $fui-primary;
+				color: $fui-default;
+			}
+
+			&--success-inverted {
+				background: $fui-success;
+				border: 1px solid $fui-success;
+				color: $fui-default;
+			}
+
+			&--warning-inverted {
+				background: $fui-warning;
+				border: 1px solid $fui-warning;
+				color: $fui-default;
+			}
+
+			&--error-inverted {
+				background: $fui-error;
+				border: 1px solid $fui-error;
+				color: $fui-default;
+			}
+		}
+	}
 </style>

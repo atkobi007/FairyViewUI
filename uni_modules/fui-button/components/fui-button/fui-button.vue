@@ -8,7 +8,7 @@
 				<image :style="topIconStyle" class="fui-button-icon-left" :src="topIcon"></image>
 			</slot>
 			<slot class="fui-button-label" :class="buttonLabelClass">
-				<text class="fui-button-label" :class="buttonLabelClass" :style="labelStyle">{{label}}</text>
+				<text class="fui-button-label" :class="buttonLabelClass" :style="labelStyle">{{text}}</text>
 			</slot>
 			<slot name="bottom" v-if="bottom">
 				<image :style="bottomIconStyle" class="fui-button-icon-left" :src="bottomIcon"></image>
@@ -23,7 +23,7 @@
 	import { ButtonSize, ButtonType, getButtonBackground } from "./fui-button.uts"
 
 	/**
-	 * @property {string} label = "按钮显示文字"
+	 * @property {string} text = "按钮显示文字"
 	 * @property {ButtonSize} size = "small"|"middle"|"large"|"auto"
 	 * @property {ButtonType} type = "info" | "success" | "warning" | "error"|"primary"| "auto" 注意: type 设置后 background 设置无效
 	 * @property {string} background = "按钮背景颜色" 默认 #AAA
@@ -44,7 +44,7 @@
 	 */
 
 	interface ButtonProps {
-		label : string
+		text : string
 		size : ButtonSize
 		type : ButtonType
 		background : string
@@ -65,7 +65,7 @@
 	}
 
 	const props = withDefaults(defineProps<ButtonProps>(), {
-		label: "BUTTON",
+		text: "BUTTON",
 		size: "large",
 		type: "auto",
 		background: "#AAA",

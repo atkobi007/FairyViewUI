@@ -17,6 +17,8 @@
 	 * @property shadowStyle:自定义阴影样式 示例:"0px 4px 8px 0px #AAA" 
 	 *			#AAA 这里要写具体的色值,鸿蒙上 rgba 透明度不管用
 	 * @property radius:圆角(默认6px) 示例：”12px 5px 2px 10px“【左上/右上/右下/左下】
+	 * @property {string} width = [value] 
+	 * @property {string} height = [value] 
 	 */
 	interface CardProps {
 		shadowStyle : string

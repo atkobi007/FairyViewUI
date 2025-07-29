@@ -15,10 +15,7 @@
 	</view>
 </template>
 <script setup lang="uts">
-	import { FuiTextUtils, FuiTextResult, IFuiTextProps } from "./fui-text.uts"
-
-	const emit = defineEmits(["click-high-light"])
-
+	
 	/**
 	 * 说明:如果外部重写默认slot 则,所有高亮相关的失效,只能当普通文本使用
 	 * @property {String} text = [value] 显示的文字【备注:如果全是英文或数据的时间有可能 app 上换行有bug,会整体单词换行】
@@ -31,6 +28,9 @@
 	 * @slot  prefix 前置插槽【自定义】
 	 * @slot  suffix 前置插槽【自定义】
 	 */
+	
+	import { FuiTextUtils, FuiTextResult, IFuiTextProps } from "./fui-text.uts"
+	const emit = defineEmits(["click-high-light"])
 	interface FuiTextProps {
 		text : string
 		textColor : string
@@ -71,7 +71,7 @@
 		obj.set("hightLightColor",props.hightLightColor);
 		obj.set("hightLightBackGroundColor",props.hightLightBackGroundColor);
 		obj.set("ellipsis",props.ellipsis);
-		let subStyle = FuiTextUtils.getSubTextStyle(item, obj)
+		let subStyle = FuiTextUtils.getSubTextStyle(item.isKeyword, obj)
 		return subStyle;
 	}
 

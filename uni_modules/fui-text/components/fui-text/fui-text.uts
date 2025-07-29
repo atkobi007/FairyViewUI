@@ -1,4 +1,7 @@
-export type FuiTextResult {
+export type FuiTextResult = {
+	// public id : number = 0;
+	// public text : string = "";
+	// public isKeyword : boolean = false;
 	id : number
 	text : string
 	isKeyword : boolean
@@ -21,7 +24,7 @@ export class FuiTextUtils {
 	static splitByKeywords(str1 : string, str2 : string) : FuiTextResult[] {
 		let resultList : FuiTextResult[] = []
 		const keywords : Array<string> = str2.split(',');
-		if (keywords.length === 0 || str2.length === 0) {
+		if (keywords.length == 0 || str2.length == 0) {
 			let result : FuiTextResult = { id: 1, text: str1, isKeyword: false }
 			resultList.push(result)
 			return resultList
@@ -56,7 +59,7 @@ export class FuiTextUtils {
 	}
 
 	static getStyle(props : UTSJSONObject) : UTSJSONObject {
-		let fontSize : number|null = props.getNumber("fontSize");
+		let fontSize : number | null = props.getNumber("fontSize");
 		const lines : number | null = props.getNumber("lines");
 		const ellipsis : string | null = props.getString("ellipsis")
 		const style = new UTSJSONObject();
@@ -72,8 +75,8 @@ export class FuiTextUtils {
 			style.set("text-overflow", `ellipsis`);
 			style.set("white-space", `nowrap`);
 		} else if (lines != null && lines > 0) {
-			if(fontSize===null){
-				fontSize=0
+			if (fontSize === null) {
+				fontSize = 0
 			}
 			style.set("height", `${(fontSize + 5) * lines}rpx`);
 			style.set("overflow", `hidden`);
@@ -81,15 +84,15 @@ export class FuiTextUtils {
 		return style
 	}
 
-	static getSubTextStyle = (item : FuiTextResult, props : UTSJSONObject) : UTSJSONObject => {
-		const isKeyword : boolean = item.isKeyword;
+	static getSubTextStyle = (keyword:boolean, props : UTSJSONObject) : UTSJSONObject => {
+		const isKeyword : boolean = keyword;
 		const style = new UTSJSONObject();
 		style.set("font-size", `${props.fontSize}rpx`);
 		// #ifndef APP
 		//只在 WEB 生效
 		style.set("word-break", `break-all`);
 		//APP 在外层text 设置后就生效，WEB 不生效 ?，这里要设置一次
-		if (props.ellipsis.length > 0) {
+		if (props.ellipsis != null && props.ellipsis.length > 0) {
 			style.set("text-overflow", `ellipsis`);
 			style.set("white-space", `nowrap`);
 		}

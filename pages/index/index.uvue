@@ -3,9 +3,17 @@
 		<image class="logo" src="/static/logo.png"></image>
 		<text class="title">{{title}}</text>
 		<fui-badge>
-			<fui-button :text="title" :labelColor="labelColor"></fui-button>
+			<fui-button type="success" left labelColor="#FFF" :text="title" :labelColor="labelColor"></fui-button>
 		</fui-badge>
+		<fui-gap></fui-gap>
 		<fui-text></fui-text>
+		<view style="display: flex;flex-direction: row; flex-wrap: wrap;align-items: center;">
+			<fui-image />
+			<fui-image width="200rpx" height="200rpx" :radius="imageRadius" />
+			<fui-image width="300rpx" height="200rpx"/>
+		</view>
+		<fui-icon :name="iconName" custom-font-family="/static/fui-icon.ttf" />
+		<fui-icon />
 	</view>
 </template>
 
@@ -14,6 +22,8 @@
 	
 	const title = ref("test")
 	const labelColor=ref("red")
+	const imageRadius=ref(100)
+	const iconName="\ue9d9"
 	onMounted(() => {
 		console.error("NVUE")
 		const result = getBatteryInfoSync()

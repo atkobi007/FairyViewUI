@@ -19,9 +19,7 @@
 		</slot>
 	</view>
 </template>
-<script setup lang="uts">
-	import { ButtonSize, ButtonType, getButtonBackground } from "./fui-button.uts"
-
+<script setup lang="uts">	
 	/**
 	 * @property {string} text = "按钮显示文字"
 	 * @property {ButtonSize} size = "small"|"middle"|"large"|"auto"
@@ -42,7 +40,8 @@
 	 * @property {string} bottomIcon = "下边ICON资源路径(要写全路径或 /static 目录下 ANDROID/HARMONY 下相对路径显示不出来图片)"
 	 * @property {string} bottomIconSize = "下边ICON大小,如 40px,60px, 默认40rpx"
 	 */
-
+	
+	import { ButtonSize, ButtonType, getButtonBackground } from "./fui-button.uts"
 	interface ButtonProps {
 		text : string
 		size : ButtonSize
@@ -72,16 +71,16 @@
 		labelColor: "#FFF",
 		labelSize: "",
 		left: false,
-		leftIcon: "/static/logo.png",
+		leftIcon: "/uni_modules/fui-button/static/logo.png",
 		leftIconSize: "40rpx",
 		right: false,
-		rightIcon: "/static/logo.png",
+		rightIcon: "/uni_modules/fui-button/static/logo.png",
 		rightIconSize: "40rpx",
 		top: false,
-		topIcon: "/static/logo.png",
+		topIcon: "/uni_modules/fui-button/static/logo.png",
 		topIconSize: "40rpx",
 		bottom: false,
-		bottomIcon: "/static/logo.png",
+		bottomIcon: "/uni_modules/fui-button/static/logo.png",
 		bottomIconSize: "40rpx"
 	})
 	//----------------------  BUTTON 样式设置 Start --------------------------------

@@ -73,7 +73,6 @@
 	const loadFont = () => {
 		const fontFamily = getFontFamily.value;
 		const fontSource = getFontSource.value
-		console.error("load:", fontFamily, fontSource)
 		uni.loadFontFace({
 			global: false,
 			family: fontFamily,

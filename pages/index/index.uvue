@@ -14,20 +14,25 @@
 		</view>
 		<fui-icon :name="iconName" custom-font-family="/static/fui-icon.ttf" />
 		<fui-icon />
+		<view style="width:100%;height:240rpx;">
+			<fui-swiper>
+			</fui-swiper>
+		</view>
 	</view>
 </template>
 
 <script setup>
 	import { getBatteryInfoSync } from "../../uni_modules/fui-battery"
+	import "@/uni_modules/fui-core"
 	
 	const title = ref("test")
 	const labelColor=ref("red")
 	const imageRadius=ref(100)
 	const iconName="\ue9d9"
 	onMounted(() => {
-		console.error("NVUE")
-		const result = getBatteryInfoSync()
-		console.error("sdk api:", result)
+		// console.error("NVUE")
+		// const result = getBatteryInfoSync()
+		// console.error("sdk api:", result)
 	})
 </script>
 

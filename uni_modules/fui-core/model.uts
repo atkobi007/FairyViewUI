@@ -1,0 +1,26 @@
+export class Colors extends UTSJSONObject{
+	constructor(){
+		super()
+	}
+}
+
+export class Config extends UTSJSONObject{
+	constructor(){
+		super()
+	}
+}
+
+export enum ThemeType {
+	LIGHT = "LIGHT",
+	DARK = "DARK",
+	AUTO = "AUTO"
+}
+
+export abstract class BaseTheme {
+	abstract theme : ThemeType;
+	abstract config:Config;
+
+	abstract init();
+	abstract getColor(c:string):string;
+}
+// export type ThemeChangedCallback = () => void;

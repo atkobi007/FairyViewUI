@@ -1,0 +1,112 @@
+/**
+ * 所有预设的皮肤属性 和 Colors 对应
+ */
+export class Themes{
+	//全局
+	public static fui_background_olor:string="--fui_background_olor";
+	public static fui_color:string="--fui_color";
+	public static fui_activeColor:string="--fui_activeColor";
+	
+	public static fui_primary="--fui_primary";
+	public static fui_success="--fui_success";
+	public static fui_warning="--fui_warning";
+	public static fui_error="--fui_error";
+	public static fui_info="--fui_info";
+	public static fui_gray="--fui-gray";
+	
+	//BADGE
+	
+	//BUTTON
+	
+	//CARD
+	public static fui_card_background_color="--fui_card_background_color";
+	
+	//GAP
+	
+	
+	//IMAGE
+	
+	//ICON
+	
+	
+	//SWIPER
+	
+	
+	//TEXT
+	
+	// 新增一个静态方法，返回所有静态属性的键数组
+	// 安卓不支持获取 Object.keys
+  public static getKeys(): string[] {
+	return [
+		"fui_background_olor",
+		"fui_color",
+		"fui_activeColor",
+		"fui_primary",
+		"fui_success",
+		"fui_warning",
+		"fui_error",
+		"fui_info",
+		"fui_gray",
+		"fui_card_background_color",
+	]
+  }
+  
+  public static getValue(name:string){
+	  return this.prototype;
+  }
+}
+//所有预设的颜色值
+export class Colors{
+	//通用背景、默认颜色、选中颜色
+	public static fui_background_olor:string="#FCFCFC";
+	public static fui_color:string="#666";
+	public static fui_activeColor:string="blue";
+	
+	public static fui_primary="#2979ff";
+	public static fui_success="#4cd964";
+	public static fui_warning="#f0ad4e";
+	public static fui_error="#dd524d";
+	public static fui_info="#909399";
+	public static fui_gray="#AAA";
+					 
+	public static fui_card_background_color="#FEFEFE";
+}
+
+// 所有预设大小
+export class Sizes{
+	public static fuiLargeSize="48rpx";
+	public static fuiMiddleSize="36rpx";
+	public static fuiSmallSize="24rpx";
+	
+	public static fuiSize80="80rpx";
+	public static fuiSize76="76rpx";
+	public static fuiSize72="72rpx";
+	public static fuiSize70="70rpx";
+	public static fuiSize68="68rpx";
+	public static fuiSize64="64rpx";
+	public static fuiSize60="60rpx";
+	public static fuiSize58="58rpx";
+	public static fuiSize54="54rpx";
+	public static fuiSize50="50rpx";
+	public static fuiSize46="46rpx";
+	public static fuiSize42="42rpx";
+	public static fuiSize40="40rpx";
+	public static fuiSize36="36rpx";
+	public static fuiSize32="32rpx";
+	public static fuiSize30="30rpx";
+	public static fuiSize28="28rpx";
+	public static fuiSize26="26rpx";
+	public static fuiSize24="24rpx";
+	public static fuiSize20="20rpx";
+	public static fuiSize18="18rpx";
+	public static fuiSize15="15rpx";
+	public static fuiSize12="12rpx"
+	public static fuiSize10="10rpx"
+	public static fuiSize8:"8px";
+	public static fuiSize7:"7rpx";
+	public static fuiSize6:"6rpx";
+	public static fuiSize5:"5rpx";
+	public static fuiSize4:"4rpx";
+	public static fuiSize2:"2rpx";
+	public static fuiSize1:"1rpx";
+}

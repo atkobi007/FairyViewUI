@@ -1,0 +1,154 @@
+// import LightTheme from "./light-theme"
+// import { DarkTheme } from "./dark-theme"
+// import { Themes } from "./utils"
+
+// const getDefaultTheme=(str:any|null):ThemeType=>{
+// 	if(str=="auto")return ThemeType.AUTO;
+// 	if(str=="light")return ThemeType.LIGHT;
+// 	if(str=="dark")return ThemeType.DARK;
+// 	return ThemeType.LIGHT;
+// }
+
+// export const init = () => {
+// 	// uni.setAppTheme({
+// 	// 	theme:"light",
+// 	// 	success:(result: SetAppThemeSuccessResult)=>{
+// 	// 		console.error("success:",result)
+// 	// 	},
+// 	// 	fail:(result: IAppThemeFail)=>{
+// 	// 		console.error("fail:",result)
+// 	// 	},
+// 	// 	complete:(result: any)=>{
+// 	// 		console.error("complete:",result)
+// 	// 	}
+// 	// })
+// 	// uni.onOsThemeChange((res: OsThemeChangeResult)=>{
+// 	// 	console.error("themeChanged:",res);
+// 	// })
+// 	// uni.onAppThemeChange((result:AppThemeChangeResult)=>{
+// 	// 	console.error("onAppThemeChange:",result);
+// 	// })
+
+// 	// let deviceInfo = uni.getDeviceInfo()
+// 	// console.error("TAG deviceInfo:", deviceInfo);
+
+// 	let themeObject = uni.getStorageSync("theme")
+// 	if (themeObject == null || themeObject == "") {
+// 		let result : GetAppBaseInfoResult = uni.getAppBaseInfo()
+// 		let themeStr :ThemeType= ThemeType.LIGHT;
+// 		if (result.appTheme == null) {
+// 			if(result.hostTheme == ""){
+// 				// themeStr="light";
+// 			}else{
+// 				themeStr= getDefaultTheme(result.hostTheme);
+// 			}
+// 		}else{
+// 			themeStr= getDefaultTheme(result.appTheme);
+// 		}		
+// 		setTheme(themeStr);
+// 	} else {
+// 		let t= getDefaultTheme(themeObject);
+// 		setTheme(t);
+// 	}
+// 	console.error("TAG 当前皮肤:", state.theme);
+	
+// 	// const color=getColor(Themes.fui_background_olor);
+// 	// console.error("color:",color);
+// }
+
+// /**
+//  * 皮肤类型
+//  * light:亮色 默认
+//  * dark: 暗色
+//  * auto: 跟随系统
+//  * 		 APP 跟随系统(如果能获取得到系统相关设置)
+//  * 		 WEB 设置当前时间6-21点整为 light 21-5 为暗
+//  */
+// export enum ThemeType {
+// 	LIGHT = "light",
+// 	DARK = "dark",
+// 	AUTO = "auto"
+// }
+// /**
+//  * 语言设置
+//  * cn:中文 默认
+//  * en:英文
+//  * auto: 跟随系统(如果能获取得到系统相关设置)
+//  */
+// export enum LanguageType {
+// 	CN = "cn",
+// 	EN = "en",
+// 	AUTO = "auto"
+// }
+
+// //定义一个大写的State类型
+// export type State = {
+// 	globalNum : number
+// 	// 如有需要，可增加更多属性
+// 	theme : ThemeType
+// 	language : LanguageType
+// }
+
+// /**
+//  * LIGHT 相关皮肤配置
+//  */
+// const lightThemes = new UTSJSONObject(LightTheme);
+// /**
+//  * DARK 相关皮肤配置
+//  */
+// const darkThemes = new UTSJSONObject(DarkTheme);
+
+// // 实例化为state
+// export const state = reactive({ globalNum: 0, theme: ThemeType.LIGHT, language: LanguageType.CN } as State)
+// // 定义修改属性值的方法
+// export const setGlobalNum = (num : number) => {
+// 	state.globalNum = num;
+// }
+// /**
+//  * 设置皮肤
+//  */
+// export const setTheme = (theme : ThemeType) => {
+// 	state.theme = theme;
+// 	uni.setStorage({
+// 		key:"theme",
+// 		data:theme,
+// 		success:(result:SetStorageSuccess)=>{
+// 			console.info("设置成功:",result);
+// 		},
+// 		fail:(result:UniError)=>{
+// 			console.error("设置失败:",result);
+// 			uni.showToast({
+// 				title:result.errMsg
+// 			})
+// 		}
+// 	})
+// 	//("theme", theme);
+// }
+// /**
+//  * 设置语言
+//  */
+// export const setLanguage = (language : LanguageType) => {
+// 	state.language = language;
+// }
+
+// /**
+//  * 获取颜色
+//  */
+// export const getColor = (c : string):string => {
+// 	let color:string|null="";
+// 	if (state.theme == ThemeType.LIGHT) {
+// 		color = lightThemes.getString(c)
+// 	} else if (state.theme == ThemeType.DARK) {
+// 		color = darkThemes.getString(c)
+// 	}
+// 	if(color==null){
+// 		return ""
+// 	}
+// 	return color
+// }
+
+
+
+
+
+// init();

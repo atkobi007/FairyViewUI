@@ -1,0 +1,55 @@
+import { ConfigType } from "./config"
+import { BaseTheme, ThemeType } from "./model"
+import { ThemeUtils } from "./utils"
+
+class FuiCore {
+	/**
+	 * 皮肤配置库
+	 */
+	themeConfig = new ThemeUtils()
+}
+
+//定义一个大写的State类型
+type State = {
+	// 如有需要，可增加更多属性
+	fuiCore : FuiCore,
+	//标识当前真实显示的皮肤模式
+	themeType:ThemeType,
+}
+
+// 实例化为state
+export const state = reactive({themeType:ThemeType.AUTO, fuiCore: new FuiCore() } as State);
+state.themeType=state.fuiCore.themeConfig.getThemeType()
+
+//监听皮肤变化,主要是设置为 AUTO 后的自动变化
+state.fuiCore.themeConfig.setThemeChanged((themeType:ThemeType)=>{
+	state.themeType=themeType;
+})
+
+//获取当前的皮肤
+const getRealTheme = ():BaseTheme => {
+	return state.fuiCore.themeConfig.getRealTheme();
+}
+/**
+ * 设置皮肤
+ */
+export const setTheme=(theme:ThemeType)=>{
+	if(getRealTheme().theme==theme){
+		return;
+	}
+	state.fuiCore.themeConfig.setTheme(theme);
+}
+
+/**
+ * 获取色值
+ */
+export const getColor = (c : string) : string => {
+	return getRealTheme().getColor(c);
+}
+
+setTimeout(()=>{
+	setTheme(ThemeType.AUTO);
+	console.error("themeUtils:", getColor(ConfigType.background_color));
+},3000);
+
+console.error("themeUtils:", getColor(ConfigType.background_color));

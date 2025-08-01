@@ -1,0 +1,25 @@
+import { Themes,Colors } from "./utils"
+
+
+// const  LightTheme = new UTSJSONObject();
+
+// for(let key in Themes.getKeys()){
+// 	console.error(Themes.getValue(key))
+// }
+// for(let key in Themes.getStaticKeys()){
+// 	console.error("KEY::",key,Themes[key]);
+// }
+
+
+
+// LightTheme.set(Themes.fui_background_olor,Colors.fui_background_olor);
+// LightTheme.set(Themes.fui_color,Colors.fui_color);
+// LightTheme.set(Themes.fui_activeColor,Colors.fui_activeColor);
+// LightTheme.set(Themes.fui_primary,Colors.fui_primary);
+// LightTheme.set(Themes.fui_success,Colors.fui_success);
+// LightTheme.set(Themes.fui_warning,Colors.fui_warning);
+// LightTheme.set(Themes.fui_error,Colors.fui_error);
+// LightTheme.set(Themes.fui_info,Colors.fui_info);
+// LightTheme.set(Themes.fui_gray,Colors.fui_gray);
+
+export default LightTheme;

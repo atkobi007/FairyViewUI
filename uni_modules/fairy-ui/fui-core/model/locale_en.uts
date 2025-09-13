@@ -1,0 +1,17 @@
+import { BaseLocale, LocaleType } from "./types";
+import { LocaleConfigs } from "../locale/en.uts"
+
+export class EnLocale extends BaseLocale {
+
+	protected override getConfigData() : UTSJSONObject {
+		return LocaleConfigs;
+	}
+	public override getLocaleType() : LocaleType {
+		return LocaleType.EN;
+	}
+
+	constructor() {
+		super()
+		console.log(this.getLocaleType(), this.config)
+	}
+}

@@ -1,0 +1,74 @@
+//皮肤类型
+export enum ThemeType {
+	LIGHT = "LIGHT",
+	DARK = "DARK",
+	AUTO = "AUTO"
+}
+//多语言类型
+export enum LocaleType {
+	ZH = "zh",
+	TW = "tw",
+	EN = "en"
+}
+
+//皮肤
+export abstract class BaseTheme {
+	//当前皮肤类型
+	protected abstract theme : ThemeType;
+	protected abstract getConfigData() : UTSJSONObject;
+	protected config : UTSJSONObject = new UTSJSONObject();
+
+	constructor() {
+		this.config = this.getConfigData();
+	}
+
+	public getThemeType() : ThemeType {
+		return this.theme;
+	}
+
+	public getTheme(key : string) : string {
+		const val = this.config.getString(key);
+		if (val == null) {
+			return ""
+		}
+		return val as string;
+	}
+	public setConfig(config : Map<string, string>) : void {
+		// for (let key in config) {
+		// 	const val = config.get(key);
+		// 	if (val != null) {
+		// 		this.config.set(key, val);
+		// 	}
+		// }
+	}
+}
+
+//语言
+export abstract class BaseLocale {
+	//当前语言类型
+	private localeType : LocaleType;
+	protected abstract getConfigData() : UTSJSONObject;
+	public abstract getLocaleType() : LocaleType;
+
+	protected config : UTSJSONObject = new UTSJSONObject();
+	constructor() {
+		this.localeType = this.getLocaleType();
+		this.config = this.getConfigData();
+	}
+
+	getLocale(key : string) : string {
+		const val = this.config.getString(key);
+		if (val == null) {
+			return ""
+		}
+		return val as string;
+	}
+	public setConfig(config : Map<string, string>) : void {
+		// for (let key in config) {
+		// 	const val = config.get(key);
+		// 	if (val != null) {
+		// 		this.config.set(key, val);
+		// 	}
+		// }
+	}
+}

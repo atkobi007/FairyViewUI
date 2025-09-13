@@ -1,0 +1,22 @@
+import { BaseLocale, BaseTheme, ThemeType } from "./model/types";
+import { LightTheme } from "./model/light.uts"
+import { ZhLocale } from "./model/locale_zh";
+
+// 定义回调类型
+export type IThemeDataCallback = (themeType : ThemeType) => void;
+//当前真实显示的皮肤类型,AUTO 模式的时候会转为当前对应的 LIGHT/DARK
+
+export class FuiCoreUtils {
+
+	//获取当前平台所使用的皮肤类型
+	public static getCurrentTheme() : BaseTheme {
+		return new LightTheme()
+	}
+
+	//获取当前平台所使用的语言类型
+	public static getCurrentLocale() : BaseLocale {
+		let result=uni.getAppBaseInfo()
+		console.log(result)
+		return new ZhLocale()
+	}
+}

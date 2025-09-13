@@ -1,0 +1,15 @@
+import { BaseTheme, ThemeType } from "./types";
+import { ColorConfigs } from "../skin/dark_config.uts"
+
+export class DarkTheme extends BaseTheme {
+	protected override theme : ThemeType = ThemeType.DARK;
+
+	protected override getConfigData() : UTSJSONObject {
+		return ColorConfigs
+	}
+
+	constructor() {
+		super()
+		console.log(this.theme, this.config)
+	}
+}

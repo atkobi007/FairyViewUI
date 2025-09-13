@@ -1,0 +1,4 @@
+export const LocaleConfigs:UTSJSONObject={
+	"button-text":"按钮",
+	"popup-title":"温馨提示",
+}

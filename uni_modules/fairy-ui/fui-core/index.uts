@@ -1,0 +1,60 @@
+// import { DarkTheme } from "./model/dark";
+import { BaseLocale, BaseTheme } from "./model/types"
+import { FuiCoreUtils } from "./utils"
+
+//fuiCore 使用事件的方式外部监听对应的变化
+class FuiCore {
+	theme : BaseTheme
+	locale : BaseLocale
+	constructor() {
+		this.theme = FuiCoreUtils.getCurrentTheme();
+		this.locale = FuiCoreUtils.getCurrentLocale();
+	}
+}
+// 实例化为state
+const fuiState = new FuiCore()//reactive({fui:new FuiCore} as State);
+
+// //获取皮肤对应key颜色值
+// const getTheme = (key : string) : string => {
+// 	return fuiState.theme.getTheme(key);
+// }
+// // 获取当前皮肤类型
+// const getThemeType = () : ThemeType => {
+// 	return fuiState.theme.getThemeType();
+// }
+
+// // 获取当前的语言
+// const getLocaleType = () : LocaleType => {
+// 	return fuiState.locale.getLocaleType();
+// }
+
+// // 获取对应语言的key的值
+// const getLocale = (key : string) : string => {
+// 	return fuiState.locale.getLocale(key);
+// }
+
+
+//自定义配置信息
+// const setThemeConfig = (config : Map<string, string>) => {
+// 	fuiState.theme.setConfig(config);
+// }
+// const setLocaleConfig = (config : Map<string, string>) => {
+// 	fuiState.locale.setConfig(config);
+// }
+
+// setTimeout(() => {
+// 	fuiState.theme = reactive(new DarkTheme())
+// }, 3000)
+
+export default fuiState;
+
+// export {
+// 	fuiState,
+// 	fuiTheme,
+// 	getTheme,
+// 	getLocale,
+// 	getThemeType,
+// 	getLocaleType,
+// 	setThemeConfig,
+// 	setLocaleConfig,
+// }

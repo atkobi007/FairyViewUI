@@ -1,0 +1,16 @@
+import { BaseLocale, LocaleType } from "./types";
+import { LocaleConfigs } from "../locale/zh.uts"
+
+export class ZhLocale extends BaseLocale {
+	protected override getConfigData() : UTSJSONObject {
+		return LocaleConfigs;
+	}
+	public override getLocaleType() : LocaleType {
+		return LocaleType.ZH;
+	}
+
+	constructor() {
+		super()
+		console.log(this.getLocaleType(), this.config)
+	}
+}

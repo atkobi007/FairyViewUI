@@ -10,7 +10,7 @@
 		<view style="display: flex;flex-direction: row; flex-wrap: wrap;align-items: center;">
 			<fui-image />
 			<fui-image width="200rpx" height="200rpx" :radius="imageRadius" />
-			<fui-image width="300rpx" height="200rpx"/>
+			<fui-image width="300rpx" height="200rpx" />
 		</view>
 		<fui-icon :name="iconName" custom-font-family="/static/fui-icon.ttf" />
 		<fui-icon />
@@ -23,16 +23,16 @@
 
 <script setup>
 	import { getBatteryInfoSync } from "../../uni_modules/fui-battery"
-	import "@/uni_modules/fui-core"
+	import fuiState from "@/uni_modules/fairy-ui/fui-core/index.uts"
 	
 	const title = ref("test")
-	const labelColor=ref("red")
-	const imageRadius=ref(100)
-	const iconName="\ue9d9"
+	const labelColor = ref("red")
+	const imageRadius = ref(100)
+	const iconName = "\ue9d9"
 	onMounted(() => {
 		// console.error("NVUE")
 		// const result = getBatteryInfoSync()
-		// console.error("sdk api:", result)
+		// console.error("fuiState:", getTheme("fui_background_olor"))
 	})
 </script>
 

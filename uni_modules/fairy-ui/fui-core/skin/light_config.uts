@@ -1,0 +1,12 @@
+export const ColorConfigs:UTSJSONObject={
+	"fui_background_olor":"#FFF",
+	"fui_color":"#FFF",
+	"fui_activeColor":"#FFF",
+	"fui_primary":"#FFF",
+	"fui_success":"#FFF",
+	"fui_warning":"#FFF",
+	"fui_error":"#FFF",
+	"fui_info":"#FFF",
+	"fui_gray":"#FFF",
+	"fui_card_background_color":"#FFF"
+}

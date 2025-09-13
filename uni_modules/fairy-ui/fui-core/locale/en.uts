@@ -1,0 +1,4 @@
+export const LocaleConfigs : UTSJSONObject = {
+	"button-text": "BUTTON",
+	"popup-title": "Tips",
+}

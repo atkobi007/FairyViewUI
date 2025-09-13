@@ -1,0 +1,15 @@
+import { BaseTheme, ThemeType } from "./types";
+import { ColorConfigs } from "../skin/light_config.uts"
+
+export class LightTheme extends BaseTheme {
+	protected override theme : ThemeType = ThemeType.LIGHT;
+
+	protected override getConfigData() : UTSJSONObject {
+		return ColorConfigs
+	}
+
+	constructor() {
+		super()
+		console.log(this.theme, this.config)
+	}
+}

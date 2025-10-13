@@ -4,7 +4,6 @@ import "@/uni_modules/fairy-ui/fui-core"
 
 export function createApp() {
 	const app = createSSRApp(App)
-	console.error(app)
 	return {
 		app
 	}

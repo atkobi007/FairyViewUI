@@ -1,0 +1,12 @@
+export enum SkinConfig{
+	fui_background_olor="fui_background_olor",
+	fui_color="fui_color",
+	fui_activeColor="fui_activeColor",
+	fui_primary="fui_primary",
+	fui_success="fui_success",
+	fui_warning="fui_warning",
+	fui_error="fui_error",
+	fui_info="fui_info",
+	fui_gray="fui_gray",
+	fui_card_background_color="fui_card_background_color"
+}

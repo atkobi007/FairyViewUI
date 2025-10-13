@@ -1,7 +1,7 @@
 <template>
 	<view style="width: 100%;height: 100%;background-color: floralwhite;">
-		<image class="logo" src="/static/logo.png"></image>
-		<text class="title">{{title}}</text>
+		<!-- <image class="logo" src="/static/logo.png"></image> -->
+		<!-- <text class="title">{{title}}</text> -->
 		<fui-badge>
 			<fui-button type="success" left labelColor="#FFF" :text="title" :labelColor="labelColor"></fui-button>
 		</fui-badge>
@@ -14,10 +14,11 @@
 		</view>
 		<fui-icon :name="iconName" custom-font-family="/static/fui-icon.ttf" />
 		<fui-icon />
-		<view style="width:100%;height:240rpx;">
+		<!-- <view style="width:100%;height:240rpx;">
 			<fui-swiper>
 			</fui-swiper>
-		</view>
+		</view> -->
+		<fui-tabs></fui-tabs>
 	</view>
 </template>
 

@@ -1,12 +1,13 @@
-export const ColorConfigs:UTSJSONObject={
-	"fui_background_olor":"#FFF",
-	"fui_color":"#FFF",
-	"fui_activeColor":"#FFF",
-	"fui_primary":"#FFF",
-	"fui_success":"#FFF",
-	"fui_warning":"#FFF",
-	"fui_error":"#FFF",
-	"fui_info":"#FFF",
-	"fui_gray":"#FFF",
-	"fui_card_background_color":"#FFF"
+import { SkinConfig } from "./skin_config.uts"
+export const ColorConfigs : UTSJSONObject = {
+	[SkinConfig.fui_background_olor]: "#FFF",
+	[SkinConfig.fui_color]: "#FFF",
+	[SkinConfig.fui_activeColor]: "#FFF",
+	[SkinConfig.fui_primary]: "#FFF",
+	[SkinConfig.fui_success]: "#FFF",
+	[SkinConfig.fui_warning]: "#FFF",
+	[SkinConfig.fui_error]: "#FFF",
+	[SkinConfig.fui_info]: "#FFF",
+	[SkinConfig.fui_gray]: "#FFF",
+	[SkinConfig.fui_card_background_color]: "#FFF"
 }

@@ -1,8 +1,8 @@
 //皮肤类型
 export enum ThemeType {
-	LIGHT = "LIGHT",
-	DARK = "DARK",
-	AUTO = "AUTO"
+	LIGHT = "light",
+	DARK = "dark",
+	AUTO = "auto"
 }
 //多语言类型
 export enum LocaleType {
